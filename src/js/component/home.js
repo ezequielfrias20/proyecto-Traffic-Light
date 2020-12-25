@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 export function Home() {
+	const [estado, setEstado] = useState("paso11");
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="fondo">
+			<div className="square">
+				<div
+					className={estado == "paso11" ? "paso11" : "paso1"}
+					onClick={() => setEstado("paso11")}
+				/>
+				<div
+					className={estado == "paso22" ? "paso22" : "paso2"}
+					onClick={() => setEstado("paso22")}
+				/>
+				<div
+					className={estado == "paso33" ? "paso33" : "paso3"}
+					onClick={() => setEstado("paso33")}
+				/>
+			</div>
+			<button
+				type="button"
+				className="btn btn-primary ml-5"
+				onClick={() => {
+					if (estado == "paso11") {
+						setEstado("paso22");
+					} else if (estado == "paso22") {
+						setEstado("paso33");
+					} else {
+						setEstado("paso11");
+					}
+				}}>
+				Cambiar
+			</button>
 		</div>
 	);
 }
